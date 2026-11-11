@@ -45,12 +45,22 @@
   --font-size-2xl: 24px; --font-size-3xl: 30px;
 }
 
-/* 隐藏Netlify广告弹窗和底部徽章 */
-div[class*="netlify-banner"],
-div[data-netlify-banner],
-div[style*="position:fixed;bottom"] {
+/* 全场景隐藏Netlify底部徽章 */
+a[href*="netlify.com"][style*="position: fixed"],
+a[href*="netlify.com"][class*="badge"],
+div[style*="position: fixed"][style*="bottom"] a[href*="netlify.com"],
+[class*="netlify-badge"],
+[class*="nf-powered-by"] {
   display: none !important;
+  visibility: hidden !important;
+  opacity: 0 !important;
   pointer-events: none !important;
+  height: 0 !important;
+  width: 0 !important;
+  overflow: hidden !important;
 }
+
+
+
 
 
