@@ -46,6 +46,19 @@ export default function RootLayout({
         <ChatPluginBootstrap />
         <ChatReasoningVisibilityController />
         {children}
+              <script dangerouslySetInnerHTML={{
+        __html: `
+          function removeNetlifyBadge() {
+            document.querySelectorAll('a[href*="netlify.com"]').forEach(el => {
+              if (el.textContent?.includes('Netlify')) el.remove();
+            });
+          }
+          window.addEventListener('load', removeNetlifyBadge);
+          new MutationObserver(removeNetlifyBadge)
+            .observe(document.body, { childList: true, subtree: true });
+        `
+      }} />
+
       </body>
     </html>
   );
